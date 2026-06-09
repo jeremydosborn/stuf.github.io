@@ -1,0 +1,11 @@
+
+# macOS
+.DS_Store
+
+# MkDocs build output
+site/
+
+# Local/archive working files
+old-flat-docs/
+*.bak
+*.broken-backup
