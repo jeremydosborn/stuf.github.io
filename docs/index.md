@@ -12,7 +12,7 @@ hide:
     <p class="stuf-eyebrow">Secure Trust Update Framework</p>
     <h1>Small, auditable update verification for embedded, fleet, and cloud systems.</h1>
     <p class="stuf-lede">
-      STUF is a set of composable Rust primitives for building secure update pipelines and implementing common security protocols. Feature flags let you select your crypto, transport, and encoding — and nothing else makes it into the binary.
+      STUF is a set of composable Rust primitives for secure update pipelines and common security protocols. Choose your crypto, transport, clock, and encoding, then assemble only the verification surface your environment needs.
     </p>
     <div class="stuf-actions">
       <a href="getting-started/" class="md-button md-button--primary">Get started</a>
@@ -115,7 +115,7 @@ hide:
       <polyline points="8 6 2 12 8 18"/>
     </svg>
     <h3>Compose your pipeline</h3>
-    <p>Feature flags select your crypto, transport, and encoding. The compiler guarantees you ship only what you enabled.</p>
+    <p>Select your crypto, transport, clock, and encoding. The compiler guarantees you ship only what you enabled.</p>
   </article>
 
   <article class="stuf-card">
@@ -145,8 +145,8 @@ hide:
     <p>
       STUF separates a minimal Rust trust kernel from protocol-specific profiles. The kernel stays auditable;
       profiles handle TUF-style metadata chains, embedded constraints, fleet staging patterns, and future
-      automotive update primitives. Cargo feature flags let you carve each build down to exactly the
-      crypto backend, transport, and encoding your environment requires — nothing else compiles in.
+      automotive update primitives. STUF lets you carve each build down to exactly the
+      crypto backend, transport, clock, and encoding your environment requires.
     </p>
   </div>
 
@@ -220,7 +220,7 @@ hide:
         <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
       </svg>
       <h3>Fleet staging</h3>
-      <p>Staged rollout without turning every mirror into a trusted signer. Mirrors distribute, roots authorize.</p>
+      <p>Staged rollout without turning every mirror into a trusted signer. Mirrors distribute, devices verify.</p>
     </article>
 
     <article class="stuf-card">
