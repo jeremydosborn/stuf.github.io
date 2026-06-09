@@ -1,0 +1,418 @@
+/* =======================================================
+   STUF — extra.css
+   ======================================================= */
+
+:root {
+  --stuf-ink: #0f172a;
+  --stuf-muted: #526575;
+  --stuf-soft: rgba(15, 23, 42, 0.045);
+  --stuf-line: rgba(15, 23, 42, 0.12);
+  --stuf-card: rgba(255, 255, 255, 0.78);
+  --stuf-accent: #2563eb;
+}
+
+/* ── Global overflow fix ─────────────────────────────── */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+
+.md-container, .md-main, .md-main__inner,
+.md-content, .md-content__inner, .md-typeset { max-width: 100%; }
+
+/* ── Homepage shell ──────────────────────────────────── */
+.md-typeset .stuf-home {
+  width: 100%; max-width: 100%; overflow-x: clip;
+  box-sizing: border-box;
+}
+.md-typeset .stuf-home * { box-sizing: border-box; }
+.md-typeset > h1#home,
+.md-typeset > h1:first-child { display: none; }
+.md-content__button { display: none; }
+.md-content__inner { margin-top: 0; }
+.md-content__inner::before { display: none; }
+
+/* ── Eyebrow label ───────────────────────────────────── */
+.md-typeset .stuf-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--stuf-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+.md-typeset .stuf-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(260px, 0.96fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 5vw, 4.5rem);
+  overflow: hidden;
+}
+
+.md-typeset .stuf-hero-copy { position: relative; z-index: 2; max-width: 640px; }
+
+.md-typeset .stuf-hero h1 {
+  margin: 0 0 1.1rem;
+  color: var(--stuf-ink);
+  font-size: clamp(2.2rem, 4.8vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.0;
+}
+
+.md-typeset .stuf-lede {
+  max-width: 600px;
+  margin: 0 0 1.5rem;
+  color: var(--stuf-muted);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.62;
+}
+
+.md-typeset .stuf-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+/* ── Device illustration ─────────────────────────────── */
+.md-typeset .stuf-hero-visual {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  min-height: 340px;
+  justify-self: end;
+}
+
+.md-typeset .stuf-device {
+  position: absolute;
+  border: 1px solid rgba(15, 23, 42, 0.13);
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(234,238,247,0.86));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Main device: looks like an industrial controller/HMI panel */
+.md-typeset .stuf-device-main {
+  right: 0; top: 30px;
+  width: min(390px, 100%);
+  height: 235px;
+  border-radius: 16px;
+}
+
+/* Side device: tall narrow panel — like a PLC or sensor unit */
+.md-typeset .stuf-device-side {
+  right: 272px; top: 80px;
+  width: 148px; height: 218px;
+  border-radius: 12px;
+  transform: rotate(-4deg);
+}
+
+/* Small device: microcontroller / embedded node */
+.md-typeset .stuf-device-small {
+  right: 34px; top: 196px;
+  width: 82px; height: 156px;
+  border-radius: 10px;
+  transform: rotate(4deg);
+}
+
+.md-typeset .stuf-device-top,
+.md-typeset .stuf-device-line,
+.md-typeset .stuf-device-dot,
+.md-typeset .stuf-device-grid,
+.md-typeset .stuf-device-led,
+.md-typeset .stuf-device-port {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.15);
+}
+
+/* Status bar on main device */
+.md-typeset .stuf-device-top {
+  left: 20px; top: 20px;
+  width: 64px; height: 10px;
+  border-radius: 5px;
+}
+
+/* LED indicator cluster on main device */
+.md-typeset .stuf-device-led {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.md-typeset .stuf-device-led.led1 {
+  right: 28px; top: 22px;
+  background: rgba(34, 197, 94, 0.7);
+}
+.md-typeset .stuf-device-led.led2 {
+  right: 44px; top: 22px;
+  background: rgba(251, 191, 36, 0.6);
+}
+.md-typeset .stuf-device-led.led3 {
+  right: 60px; top: 22px;
+  background: rgba(15, 23, 42, 0.2);
+}
+
+/* Text lines */
+.md-typeset .stuf-device-line {
+  left: 20px; top: 54px; height: 8px; border-radius: 4px;
+}
+.md-typeset .stuf-device-line.w80 { width: 80%; }
+.md-typeset .stuf-device-line.w70 { width: 70%; }
+.md-typeset .stuf-device-line.w55 { top: 74px; width: 55%; }
+.md-typeset .stuf-device-line.w45 { top: 72px; width: 45%; }
+
+/* Grid / screen area on main device */
+.md-typeset .stuf-device-grid {
+  left: 20px; right: 20px; bottom: 20px;
+  height: 110px;
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgba(15,23,42,0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15,23,42,0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Port connector on small device */
+.md-typeset .stuf-device-port {
+  left: 50%; bottom: 18px;
+  width: 28px; height: 6px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+
+/* Dot on side device */
+.md-typeset .stuf-device-dot {
+  left: 50%; top: 16px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Intro cards ─────────────────────────────────────── */
+.md-typeset .stuf-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.8vw, 1.2rem);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(3.5rem, 6vw, 5rem);
+}
+
+/* ── Sections ────────────────────────────────────────── */
+.md-typeset .stuf-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--stuf-line);
+}
+
+.md-typeset .stuf-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.md-typeset .stuf-section h2 {
+  max-width: 800px;
+  margin: 0 0 1rem;
+  color: var(--stuf-ink);
+  font-size: clamp(1.85rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.md-typeset .stuf-section p {
+  max-width: 700px;
+  margin: 0 0 1.1rem;
+  color: var(--stuf-muted);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.68;
+}
+
+/* ── Cards ───────────────────────────────────────────── */
+.md-typeset .stuf-card {
+  position: relative;
+  min-height: 148px;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  border: 1px solid var(--stuf-line);
+  border-radius: 18px;
+  background: var(--stuf-card);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.md-typeset .stuf-card::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem; right: 1.1rem; top: 0;
+  height: 1px;
+  background: rgba(15, 23, 42, 0.14);
+}
+
+/* Card icon — industrial device SVG icons via CSS */
+.md-typeset .stuf-card .stuf-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  margin-bottom: 0.85rem;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--stuf-accent);
+  font-size: 18px;
+}
+
+.md-typeset .stuf-card h3 {
+  margin: 0 0 0.55rem;
+  color: var(--stuf-ink);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+}
+
+.md-typeset .stuf-card p {
+  margin: 0;
+  color: var(--stuf-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* ── Feature grid ────────────────────────────────────── */
+.md-typeset .stuf-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.8vw, 1.2rem);
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+/* ── Code cards ──────────────────────────────────────── */
+.md-typeset .stuf-code-card {
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 20px;
+  background: #0d1520;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+  overflow: hidden;
+}
+
+.md-typeset .stuf-code-label {
+  margin: 0;
+  padding: 0.9rem 1.1rem 0;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.md-typeset .stuf-code-card pre {
+  margin: 0;
+  padding: 1.1rem;
+  background: transparent;
+}
+
+.md-typeset .stuf-code-card code {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.8rem;
+  line-height: 1.58;
+}
+
+/* ── Verification flow ───────────────────────────────── */
+.md-typeset .stuf-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.md-typeset .stuf-flow div {
+  position: relative;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--stuf-line);
+  border-radius: 14px;
+  background: var(--stuf-soft);
+  color: var(--stuf-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.md-typeset .stuf-flow div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -0.6rem;
+  top: 50%;
+  color: rgba(15, 23, 42, 0.32);
+  font-size: 1rem;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* ── Support page helpers ────────────────────────────── */
+.md-typeset .stuf-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.md-typeset .stuf-status-badge.open {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+.md-typeset .stuf-status-badge.needed {
+  background: rgba(251, 146, 60, 0.1);
+  color: #c2410c;
+  border: 1px solid rgba(251, 146, 60, 0.22);
+}
+.md-typeset .stuf-status-badge.planned {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1050px) {
+  .md-typeset .stuf-hero { grid-template-columns: 1fr; padding-top: 3rem; }
+  .md-typeset .stuf-hero-visual { justify-self: center; max-width: 440px; }
+  .md-typeset .stuf-split { grid-template-columns: 1fr; }
+  .md-typeset .stuf-intro-grid,
+  .md-typeset .stuf-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset .stuf-flow { grid-template-columns: 1fr; }
+  .md-typeset .stuf-flow div:not(:last-child)::after {
+    content: "↓"; right: auto; left: 1rem; top: auto; bottom: -0.9rem; transform: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .md-typeset .stuf-hero, .md-typeset .stuf-section { padding-left: 1rem; padding-right: 1rem; }
+  .md-typeset .stuf-hero h1 { font-size: clamp(2.3rem, 13vw, 3.6rem); }
+  .md-typeset .stuf-hero-visual { min-height: 280px; max-width: 320px; }
+  .md-typeset .stuf-device-main { width: 288px; height: 176px; right: 0; top: 24px; }
+  .md-typeset .stuf-device-side { width: 110px; height: 162px; right: 200px; top: 70px; }
+  .md-typeset .stuf-device-small { width: 72px; height: 138px; right: 24px; top: 176px; }
+  .md-typeset .stuf-intro-grid,
+  .md-typeset .stuf-feature-grid { grid-template-columns: 1fr; }
+  .md-typeset .stuf-intro-grid { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ── Panel visuals (architecture + status sections) ─── */
+.md-typeset .stuf-panel-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-typeset .stuf-panel-visual svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
+}

@@ -1,0 +1,57 @@
+site_name: STUF
+site_description: Secure Trust Update Framework documentation
+site_url: https://jeremydosborn.github.io/stuf/
+repo_url: https://github.com/jeremydosborn/stuf
+repo_name: jeremydosborn/stuf
+
+theme:
+  name: material
+  logo: assets/stuf-logo.svg
+  favicon: assets/stuf-logo.svg
+  palette:
+    scheme: default
+    primary: blue grey
+    accent: light blue
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/home.js
+
+nav:
+  - Home: index.md
+  - Why STUF: why/index.md
+  - How to use STUF: getting-started/index.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

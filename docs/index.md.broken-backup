@@ -1,0 +1,167 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
+<div class="stuf-home">
+
+<section class="stuf-hero">
+  <div class="stuf-hero__background">
+    <div class="stuf-orbit stuf-orbit--one"></div>
+    <div class="stuf-orbit stuf-orbit--two"></div>
+    <div class="stuf-orbit stuf-orbit--three"></div>
+
+    <div class="stuf-device stuf-device--panel">
+      <div class="stuf-device__bezel">
+        <div class="stuf-device__screen">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stuf-device stuf-device--tablet">
+      <div class="stuf-device__bezel">
+        <div class="stuf-device__screen">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stuf-device stuf-device--phone">
+      <div class="stuf-device__bezel">
+        <div class="stuf-device__screen">
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stuf-hero__content">
+    <p class="stuf-kicker">Secure Trust Update Framework</p>
+    <h1>Small, auditable update verification for embedded, fleet, and cloud systems.</h1>
+    <p class="stuf-lede">
+      STUF is a Rust trust kernel and protocol profile architecture for verifying signed update metadata,
+      authorized artifacts, and constrained-device update flows.
+    </p>
+    <div class="stuf-actions">
+      <a class="stuf-button stuf-button--primary" href="getting-started/">Get started</a>
+      <a class="stuf-button stuf-button--secondary" href="spec/">Read the spec</a>
+    </div>
+  </div>
+
+  <div class="stuf-hero__foreground">
+    <div class="stuf-foreground stuf-foreground--back"></div>
+    <div class="stuf-foreground stuf-foreground--front"></div>
+  </div>
+</section>
+
+<section class="stuf-band">
+  <div class="stuf-band__inner">
+    <article class="stuf-mini-feature">
+      <h3>Made to reason about</h3>
+      <p>A small trust kernel with explicit boundaries and auditable verification flow.</p>
+    </article>
+    <article class="stuf-mini-feature">
+      <h3>Fast and lightweight</h3>
+      <p>Designed for constrained systems, embedded targets, and lean cloud pipelines.</p>
+    </article>
+    <article class="stuf-mini-feature">
+      <h3>Maintain ownership</h3>
+      <p>Use open components and transparent verification logic without surrendering control.</p>
+    </article>
+    <article class="stuf-mini-feature">
+      <h3>Profile-driven</h3>
+      <p>Support TUF-style metadata chains, no-heap constraints, and staged rollout patterns.</p>
+    </article>
+  </div>
+</section>
+
+<section class="stuf-section stuf-section--light">
+  <div class="stuf-grid">
+    <div class="stuf-copy">
+      <h2>Update security should be small enough to reason about.</h2>
+      <p>
+        STUF separates a minimal trust kernel from protocol-specific profiles. The kernel stays auditable;
+        profiles handle TUF-style metadata chains, embedded constraints, fleet staging patterns, and future
+        automotive update primitives.
+      </p>
+    </div>
+    <div class="stuf-card">
+      <h3>Current architecture</h3>
+      <pre><code>stuf-core       # trust kernel
+stuf-encoding   # canonical encoding
+stuf-env        # platform bindings
+stuf-protocols  # protocol profiles
+stuf-examples   # publisher and embedded examples</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="stuf-section stuf-section--muted">
+  <div class="stuf-section__inner">
+    <div class="stuf-section__heading">
+      <h2>Built for real update paths</h2>
+      <p>
+        Verification patterns for constrained firmware, staged fleet rollout, and cloud delivery systems.
+      </p>
+    </div>
+
+    <div class="stuf-feature-grid">
+      <a class="stuf-feature" href="profiles/embedded/">
+        <h3>Embedded</h3>
+        <p>Verify firmware and metadata on constrained devices with explicit trust boundaries.</p>
+      </a>
+      <a class="stuf-feature" href="profiles/no-heap/">
+        <h3>No-heap</h3>
+        <p>Explore verification paths for targets where allocation must be bounded or avoided.</p>
+      </a>
+      <a class="stuf-feature" href="pilots/fleet-staging/">
+        <h3>Fleet staging</h3>
+        <p>Support staged rollout without turning every mirror into a trusted signer.</p>
+      </a>
+      <a class="stuf-feature" href="profiles/cloud/">
+        <h3>Cloud</h3>
+        <p>Use the same verification concepts in release pipelines, mirrors, and audit systems.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="stuf-section stuf-section--light">
+  <div class="stuf-section__inner">
+    <div class="stuf-section__heading">
+      <h2>Verification flow</h2>
+      <p>From trust anchor to authorized artifact, each stage is explicit and reviewable.</p>
+    </div>
+
+    <div class="stuf-flow">
+      <div>Trust anchor</div>
+      <div>Metadata chain</div>
+      <div>Profile checks</div>
+      <div>Target authorization</div>
+      <div>Verified artifact</div>
+    </div>
+  </div>
+</section>
+
+<section class="stuf-section stuf-section--light stuf-section--final">
+  <div class="stuf-grid">
+    <div class="stuf-copy">
+      <h2>Status</h2>
+      <p>
+        STUF is early-stage infrastructure intended for research, pilots, review, and implementation feedback.
+        The current work focuses on a TUF-oriented verification path, canonical encoding, embedded examples,
+        and no-heap constraints.
+      </p>
+    </div>
+    <div class="stuf-card">
+      <h3>Try it locally</h3>
+      <pre><code>git clone https://github.com/jeremydosborn/stuf.git
+cd stuf
+cargo test</code></pre>
+    </div>
+  </div>
+</section>
+
+</div>

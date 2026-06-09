@@ -1,0 +1,71 @@
+!!! warning "Early-stage software"
+    STUF is not production-ready. It has not undergone independent security review and should not be used in production update paths without one. See the [GitHub repo](https://github.com/jeremydosborn/stuf) for current status.
+
+# Why STUF?
+
+Software and firmware updates increasingly touch the physical world — industrial controllers, automotive ECUs, medical devices, building infrastructure, and cloud-connected fleets. The security of the update mechanism is now a first-order concern, not an afterthought.
+
+## The update problem
+
+Update systems tend to inherit too much trust from the environment they run in. The repository is assumed honest. The mirror is assumed intact. The network is assumed uncompromised. The client is assumed to have the right keys. In practice, every part of that chain has failed in real incidents.
+
+STUF starts from the opposite assumption: any component of the update infrastructure may be compromised. The verification layer should hold regardless.
+
+| Risk | Failure mode | STUF concern |
+|---|---|---|
+| Repository compromise | attacker publishes malicious metadata | signed role verification |
+| Mirror compromise | stale or substituted artifacts | target hash and length checks |
+| Key compromise | attacker signs with limited authority | role separation and threshold rules |
+| Device constraint | verifier cannot parse large metadata | profile-specific limits |
+| Fleet staging | mirror becomes operational bottleneck | staged but untrusted distribution |
+
+## Why existing tools fall short
+
+The TUF specification is sound. Existing implementations like aws-tough and go-tuf are useful. But they were designed for specific environments — typically server-side, std Rust or Go, with full filesystem access and a network stack. They do not compose well into constrained environments, and they offer limited control over the crypto backend, transport, and encoding stack.
+
+STUF is designed differently. The trust kernel is small enough to audit independently. Protocol profiles are separate from the kernel, so a TUF profile and an Uptane profile can share the same verification primitives without coupling. Cargo feature flags let you select exactly the crypto backend, transport, and encoding your environment requires — nothing else compiles into the binary.
+
+A toaster firmware updater and a cloud release pipeline can share the same trust kernel while producing completely different binaries.
+
+## Design goals
+
+STUF's design is built around five principles.
+
+**Small trust kernel.** The code that makes security decisions should be small enough that a single reviewer can hold it in their head. Complexity belongs in profiles and environment bindings, not in the kernel.
+
+**Explicit trust transitions.** Every step from untrusted bytes to verified artifact should be visible in types and code paths. There is no implicit trust promotion.
+
+```rust
+// An unverified value and a verified value are different types.
+// You cannot pass one where the other is expected.
+let unverified: Unverified<Metadata> = fetch_metadata();
+let verified: Verified<Metadata> = verifier.verify(unverified)?;
+```
+
+**Profile-driven assumptions.** Different environments need genuinely different constraints. The embedded profile uses bounded stack buffers and bakes the trust anchor in at compile time. The cloud profile supports audit logging, policy hooks, and CI/CD integration. Both use the same kernel.
+
+**Fail closed.** If verification cannot prove authorization, the artifact is not accepted. Downloaded successfully is not the same as verified.
+
+**Composable by design.** Feature flags are not just a convenience — they are the interface. Enabling `crypto-ed25519` and `transport-uart` in `Cargo.toml` is how you tell the compiler exactly what to build. The output is a binary that contains only what you specified.
+
+## Threat model
+
+STUF assumes that update infrastructure can be partially compromised.
+
+An attacker may be able to observe update traffic, modify network responses, compromise a mirror, replay old metadata, serve different metadata to different clients, or compromise some signing keys.
+
+The verification layer should reject unauthorized artifacts, expired metadata, hash mismatches, length mismatches, role confusion, and malformed encoding — regardless of which parts of the infrastructure are compromised.
+
+STUF does not by itself solve secure boot, device identity, hardware roots of trust, remote attestation, or key ceremony governance. It solves one thing: a target is not trusted because it was downloaded. It is trusted only after a profile-specific metadata chain authorizes it and the artifact bytes match the authorized description.
+
+## Alternatives
+
+**aws-tough** is a solid TUF client for server-side Rust. It assumes `std`, a filesystem, and a network stack, and uses aws-lc-rs for crypto. It is not designed for embedded targets and does not offer pluggable backends.
+
+**go-tuf** is the reference Go TUF implementation. Mature and well-tested, but Go does not target bare-metal and the crypto stack is not configurable.
+
+**in-toto** addresses supply chain integrity at the build level, not at the device update level. Complementary, not competing.
+
+**Uptane** is a TUF-based profile for automotive OTA updates, standardized by the Linux Foundation. STUF's design is compatible with an Uptane profile — the director/image repository split and ECU signing model map onto STUF's composable primitives. That profile is on the roadmap.
+
+None of these is wrong for their intended environment. STUF exists because no existing tool serves the full range from bare-metal microcontroller to cloud release pipeline with a shared, auditable trust kernel.
