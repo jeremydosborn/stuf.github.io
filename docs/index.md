@@ -239,8 +239,8 @@ hide:
 
   <div class="stuf-flow">
     <div>Trust anchor</div>
-    <div>Metadata chain</div>
     <div>Profile checks</div>
+    <div>Metadata chain</div>
     <div>Target authorization</div>
     <div>Verified artifact</div>
   </div>
