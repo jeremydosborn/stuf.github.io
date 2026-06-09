@@ -1,51 +1,39 @@
-# Support
+# Support STUF
 
-STUF needs review, pilots, and implementation feedback to move from prototype to production-ready infrastructure.
+STUF is early-stage open-source infrastructure for small, auditable update verification across embedded, fleet, and cloud systems.
 
-## Ways to contribute
+The goal is to keep the trust kernel small, explicit, and reviewable while building toward real-world pilots and independent security review.
+
+## Sponsor and contribute
 
 <div class="grid cards" markdown>
 
--   :material-shield-check: **Security review**
+-   :material-heart:{ .lg .middle } __Sponsor STUF__
 
     ---
 
-    The trust kernel and verification flow need independent scrutiny before production use. See [security review](security-review.md) for scope and priorities.
+    Help fund development, documentation, testing, and security review.
 
--   :material-account-group: **Pilot programs**
+    [Sponsor on GitHub](https://github.com/sponsors/jeremydosborn){ .md-button .md-button--primary }
 
-    ---
-
-    Field testing reveals assumptions that benchmarks miss — constrained devices, real rollout patterns, production failure modes. [Get in touch](contributing.md) to propose a pilot.
-
--   :material-code-braces: **Code contributions**
+-   :material-source-pull:{ .lg .middle } __Contribute__
 
     ---
 
-    Small, auditable changes: test fixtures, documentation corrections, embedded constraints, TUF profile review. See the [contributing guide](contributing.md).
+    Contributions are welcome: code review, documentation improvements, examples, tests, threat-model feedback, and issue reports.
 
--   :material-currency-usd: **Funding**
-
-    ---
-
-    Security review and pilot support require sustained time. See [funding priorities](funding.md) if you can help.
+    [View the repository](https://github.com/jeremydosborn/stuf){ .md-button }
 
 </div>
 
-## Current needs
+## What help is most useful
 
-| Need | Priority | Status |
-|---|---|---|
-| Security review | Critical | <span class="stuf-status-badge needed">Needed</span> |
-| Embedded feedback | High | <span class="stuf-status-badge open">Open</span> |
-| TUF compatibility review | High | <span class="stuf-status-badge open">Open</span> |
-| Pilot partners | High | <span class="stuf-status-badge open">Open</span> |
-| Funding | Medium | <span class="stuf-status-badge needed">Needed</span> |
-| Interoperability fixtures | Medium | <span class="stuf-status-badge planned">Planned</span> |
+- Review the trust model and verification assumptions.
+- Improve examples and integration documentation.
+- Add tests for edge cases and failure paths.
+- Open issues where the docs are unclear.
+- Suggest pilot use cases for embedded, fleet, industrial IoT, or cloud update systems.
 
 ## Contact
 
-The project is at [github.com/jeremydosborn/stuf](https://github.com/jeremydosborn/stuf). Open an issue to start a conversation about review, pilots, or contributions.
-
-!!! warning "Not production-ready"
-    STUF should not be used in production update paths without independent security review. See [security review](security-review.md) for details.
+For now, please use GitHub issues or the repository discussion channels rather than email.
