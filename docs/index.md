@@ -16,7 +16,6 @@ hide:
     </p>
     <div class="stuf-actions">
       <a href="getting-started/" class="md-button md-button--primary">Get started</a>
-      <a href="spec/" class="md-button">Read the spec</a>
     </div>
   </div>
 
