@@ -115,7 +115,7 @@ hide:
       <polyline points="8 6 2 12 8 18"/>
     </svg>
     <h3>Compose your pipeline</h3>
-    <p>Select your crypto, transport, clock, and encoding. The compiler guarantees you ship only what you enabled.</p>
+    <p>Select your crypto, transport, clock, encoding, and protocol. The compiler guarantees you ship only what you enabled.</p>
   </article>
 
   <article class="stuf-card">

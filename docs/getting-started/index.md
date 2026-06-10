@@ -73,7 +73,7 @@ On a cloud target you might use `crypto-ring`, `transport-http`, and `clock-std`
 
 ### stuf-protocols
 
-Protocol profiles implement the full verification chain for a specific security protocol. The TUF profile verifies the Root → Timestamp → Snapshot → Targets chain, checks role thresholds, validates expiry, and authorizes the target artifact.
+Protocol profiles implement the full verification chain for a specific security protocol. The TUF profile verifies the Root → Targets → Snapshot → Timestamp chain, checks role thresholds, validates expiry, and authorizes the target artifact.
 
 Protocol profiles are deliberately separate from the kernel.
 
