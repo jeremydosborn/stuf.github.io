@@ -6,8 +6,8 @@ repo_name: jeremydosborn/stuf
 
 theme:
   name: material
-  logo: assets/stuf-logo.svg
-  favicon: assets/stuf-logo.svg
+  logo: assets/stuf-hero.png
+  favicon: assets/stuf-hero.png
   palette:
     scheme: default
     primary: blue grey
